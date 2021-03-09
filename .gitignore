@@ -7,8 +7,12 @@
 *.pot
 *.pyc
 __pycache__
-media
+*/__pycache__/
+!**/__pycache__/
 */migrations/
+!**/migrations/
+!**/migrations/**/__pycache__/
+media
 
 # Backup files # 
 *.bak 
