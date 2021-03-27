@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Aplicaciones.Cuentas',
     'rest_framework',
     'api',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,11 @@ STATICFILES_DIRS = [
 STATIC_URL = '/templates/'
 
 LOGIN_REDIRECT_URL = '/disponibles'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        #'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
+}
