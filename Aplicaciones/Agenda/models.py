@@ -18,7 +18,7 @@ class Medico(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE,related_name='usuario')
     nroCaja = models.IntegerField()
     telefono = models.IntegerField()
-    object = models.Manager()
+    #departament model char.field
 
     def __str__(self):
         return str(self.usuario)
@@ -30,7 +30,6 @@ class Guardia(models.Model):
     centroSalud = models.ForeignKey(CentroSalud,to_field='nombre',on_delete=models.CASCADE)
     medico = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, blank = True, null = True)
     usuario = models.ForeignKey(User, default=1, on_delete=models.DO_NOTHING, blank = True, null = True)
-    object = models.Manager()
     disponible = models.BooleanField(default=True)
 
     def __str__(self):

@@ -1,18 +1,21 @@
+from django.shortcuts import render
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from Aplicaciones.Agenda.models import *
-from . import serializers
+from rest_framework import status, viewsets
+from Aplicaciones.Agenda.models import Guardia
+from api.serializers import GuardiaSerializer
+from api import serializers
 
 class GuardiasApiView(APIView):
     
-    serializer_class = serializers.GuardiaSerializer
+    serializer_class = GuardiaSerializer()
 
     def get(self, request):
 
-        allGuardias = Guardia.object.all().values()
+        allGuardias = Guardia.objects.all().values()
 
-        return Response({"Guardias":"Lista de guardias: ", "Guardias":allGuardias})
+        return Response({"Guardias":"Lista de guardias: ", "guardias": allGuardias})
 
     def post(self, request):
 
@@ -20,7 +23,7 @@ class GuardiasApiView(APIView):
 
         if serializer.is_valid():
 
-            Guardia.object.create(
+            Guardia.objects.create(
             title = request.data['fecha'],
             turno = request.data['turno'],
             centroSalud = request.data['centroSalud'],
@@ -29,9 +32,14 @@ class GuardiasApiView(APIView):
             disponible = request.data['disponible']
             )
 
-            allGuardias = Guardia.object.all().values()
-            return Response({"Guardias":"Lista de guardias: ", "Guardias":allGuardias})
+            allGuardias = Guardia.objects.all().values()
+            return Response({"Guardias":"Lista de guardias: ", "guardias":allGuardias})
         else:
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    
+class GuardiasViewSet(viewsets.ModelViewSet):
 
-   
+    serializer_class = serializers.GuardiaSerializer
+    queryset = Guardia.objects.all()
+
+    
