@@ -15,8 +15,9 @@ class GuardiaSerializer(serializers.ModelSerializer):
             turno = validated_data['turno'],
             centroSalud = validated_data['centroSalud']
         )
-
+        
         guardia.save()
         return guardia
+        
 
 

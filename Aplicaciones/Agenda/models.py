@@ -18,7 +18,8 @@ class Medico(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE,related_name='usuario')
     nroCaja = models.IntegerField()
     telefono = models.IntegerField()
-    #departament model char.field
+    #departamento char field
+    #ranking int field
 
     def __str__(self):
         return str(self.usuario)
