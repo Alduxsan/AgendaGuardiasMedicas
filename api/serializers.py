@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Aplicaciones.Agenda.models import Guardia
+from Aplicaciones.Agenda.models import Guardia, Medico
 
 class GuardiaSerializer(serializers.ModelSerializer):
 
@@ -20,4 +20,9 @@ class GuardiaSerializer(serializers.ModelSerializer):
         return guardia
         
 
+class MedicoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model= Medico
+        fields = "__all__"
 
