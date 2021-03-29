@@ -15,11 +15,11 @@ class indexView(LoginRequiredMixin, ListView):
     #paginate_by = 30
 
     def get_queryset(self):
-        return Guardia.object.filter(usuario = 1)
+        return Guardia.objects.filter(medico__usuario = self.request.user.id)
 
 
 def asignar(request, slug):
-    Guardia.object.filter(id = slug).update(usuario = request.user)
+    Guardia.objects.filter(id = slug).update(usuario = request.user)
     userId = request.user
     return redirect('/asignadas/{}'.format(userId))
 
