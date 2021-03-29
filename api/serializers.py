@@ -3,6 +3,7 @@ from Aplicaciones.Agenda.models import *
 from Aplicaciones.Cuentas.models import *
 from django.contrib.auth.models import User
 
+from Aplicaciones.Agenda.models import Guardia, Medico
 
 class GuardiaSerializer(serializers.ModelSerializer):
 
@@ -33,5 +34,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
 
         return user
+class MedicoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model= Medico
+        fields = "__all__"
 
     

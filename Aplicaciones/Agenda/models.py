@@ -35,13 +35,21 @@ class Guardia(models.Model):
     fecha = models.DateField()
     turno = models.CharField(max_length=25)
     centroSalud = models.ForeignKey(CentroSalud,to_field='nombre',on_delete=models.CASCADE)
-    medico = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, blank = True, null = True)
+    medico = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, default=0, blank = True, null = True)
     disponible = models.BooleanField(default=True)
     departamento = models.CharField(max_length=20, choices=DEPARTAMENTOS, default='S/A')
 
 
     def __str__(self):
-        return f"{self.id}) {self.centroSalud} {self.turno} {self.fecha} ----> {self.medico}"
+        return f"{self.id}) {self.centroSalud} {self.turno} {self.fecha} ----> {self.medico} / disponible: {self.disponible}"
+
+    def save(self, force_update=True, *args, **kwargs):
+        if self.medico != None:
+            self.disponible = False
+        else:
+            self.disponible = True
+        
+        super().save(*args, **kwargs)
 
 class Fecha(models.Model):
     fecha = models.DateField()
