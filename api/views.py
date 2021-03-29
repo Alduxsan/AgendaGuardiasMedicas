@@ -24,3 +24,13 @@ class GuardiasViewSet(viewsets.ModelViewSet):
         mis_guardias = Guardia.objects.filter(medico = params['pk'])
         serializer = GuardiaSerializer(mis_guardias, many=True)
         return Response(serializer.data)
+
+class Guardia_modificar(viewsets.ModelViewSet):
+
+    serializer_class = serializers.GuardiaSerializer
+    queryset = Guardia.objects.all()
+
+    def put(self, request, *args, **kwargs):
+        '''actualiza solo los campos diferentes de la instancia'''
+        return self.partial_update(request, *args, **kwargs)
+

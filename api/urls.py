@@ -7,6 +7,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('guardias_disponibles', views.GuardiasViewSet, basename='guardias_disponibles')
+router.register('modificar_guardia', views.Guardia_modificar, basename='modificar_guardia')
 
 mis_guardias = views.GuardiasViewSet.as_view({
     'get': 'list',
