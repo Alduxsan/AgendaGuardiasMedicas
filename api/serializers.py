@@ -34,6 +34,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
 
         return user
+        
 class MedicoSerializer(serializers.ModelSerializer):
 
     class Meta:

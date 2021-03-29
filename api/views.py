@@ -19,6 +19,11 @@ class GuardiasViewSet(viewsets.ModelViewSet):
         serializer = GuardiaSerializer(queryset, many=True)
         return Response(serializer.data)
 
+class MisGuardias(viewsets.ModelViewSet):
+    
+    serializer_class = serializers.GuardiaSerializer
+    queryset = Guardia.objects.all()
+
     def retrieve(self, request, *args, **kwargs):
         params = kwargs
         mis_guardias = Guardia.objects.filter(medico = params['pk'])
