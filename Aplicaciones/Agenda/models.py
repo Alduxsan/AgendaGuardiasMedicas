@@ -23,13 +23,21 @@ class Medico(models.Model):
         return str(self.usuario)
 
 class Guardia(models.Model):
+    DEPARTAMENTOS = [
+        ('S/A','S/A'),
+        ('Artigas','Artigas'), ('Canelones' , 'Canelones'),('Cerro Largo', 'Cerro Largo'),('Colonia','Colonia'),('Durazno','Durazno'),
+        ('Flores','Flores'),('Florida','Florida'),('Lavalleja','Lavalleja'),('Maldonado','Maldonado'),('Montevideo','Montevideo'),
+        ('Paysandu','Paysandu'),('Rio Negro','Rio Negro'),('Rivera','Rivera'),('Rocha','Rocha'),('Salto','Salto'),('San José','San José'),
+        ('Tacuarembó','Tacuarembó'),('Treinta y Trees','Treinta y Tres')  
+    ]
+
     id = models.AutoField(primary_key=True)
     fecha = models.DateField()
     turno = models.CharField(max_length=25)
     centroSalud = models.ForeignKey(CentroSalud,to_field='nombre',on_delete=models.CASCADE)
     medico = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, blank = True, null = True)
     disponible = models.BooleanField(default=True)
-    departamento = models.CharField(max_length=20, default='Sin asignar')
+    departamento = models.CharField(max_length=20, choices=DEPARTAMENTOS, default='S/A')
 
 
     def __str__(self):
