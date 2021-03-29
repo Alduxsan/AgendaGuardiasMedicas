@@ -1,0 +1,190 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+*/__pycache__/
+!**/__pycache__/
+*/migrations/
+!**/migrations/
+!**/migrations/**/__pycache__/
+media
+
+# Backup files # 
+*.bak 
+
+# If you are using PyCharm #
+AgendaGuardiasMedicas/.idea/
+AgendaGuardiasMedicas/.idea
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/AgendaGuardiasMedicas.iml
+.idea/**/workspace.xml 
+.idea/**/tasks.xml 
+.idea/dictionaries 
+.idea/**/dataSources/ 
+.idea/**/dataSources.ids 
+.idea/**/dataSources.xml 
+.idea/**/dataSources.local.xml 
+.idea/**/sqlDataSources.xml 
+.idea/**/dynamic.xml 
+.idea/**/uiDesigner.xml 
+.idea/**/gradle.xml 
+.idea/**/libraries 
+*.iws /out/
+.idea
+.DS_Store
+
+# Python # 
+*.py[cod] 
+*$py.class 
+
+# Distribution / packaging 
+.Python build/ 
+develop-eggs/ 
+dist/ 
+downloads/ 
+eggs/ 
+.eggs/ 
+lib/ 
+lib64/ 
+parts/ 
+sdist/ 
+var/ 
+wheels/ 
+*.egg-info/ 
+.installed.cfg 
+*.egg 
+*.manifest 
+*.spec 
+
+# Installer logs 
+pip-log.txt 
+pip-delete-this-directory.txt 
+
+# Unit test / coverage reports 
+htmlcov/ 
+.tox/ 
+.coverage 
+.coverage.* 
+.cache 
+.pytest_cache/ 
+nosetests.xml 
+coverage.xml 
+*.cover 
+.hypothesis/ 
+
+# Jupyter Notebook 
+.ipynb_checkpoints 
+
+# pyenv 
+.python-version 
+
+# celery 
+celerybeat-schedule.* 
+
+# SageMath parsed files 
+*.sage.py 
+
+# Environments 
+.env 
+.venv 
+env/ 
+venv/ 
+ENV/ 
+env.bak/ 
+venv.bak/ 
+
+# mkdocs documentation 
+/site 
+
+# mypy 
+.mypy_cache/ 
+
+# Sublime Text # 
+*.tmlanguage.cache 
+*.tmPreferences.cache 
+*.stTheme.cache 
+*.sublime-workspace 
+*.sublime-project 
+
+# sftp configuration file 
+sftp-config.json 
+
+# Package control specific files Package 
+Control.last-run 
+Control.ca-list 
+Control.ca-bundle 
+Control.system-ca-bundle 
+GitHub.sublime-settings 
+
+*.pyc
+*.json
+AgendaGuardiasMedicas/__pycache__/__init__.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/settings.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/urls.cpython-38.pyc
+Aplicaciones/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Agenda/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/GuardiasDisponibles/__pycache__/views.cpython-38.pyc
+Aplicaciones/GuardiasDisponibles/__pycache__/urls.cpython-38.pyc
+Aplicaciones/GuardiasDisponibles/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/GuardiasAsignadas/__pycache__/views.cpython-38.pyc
+Aplicaciones/GuardiasAsignadas/__pycache__/urls.cpython-38.pyc
+Aplicaciones/GuardiasAsignadas/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/DevolucionGuardias/__pycache__/views.cpython-38.pyc
+Aplicaciones/DevolucionGuardias/__pycache__/urls.cpython-38.pyc
+Aplicaciones/DevolucionGuardias/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Cuentas/migrations/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/views.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/urls.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/models.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/admin.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Agenda/migrations/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Agenda/migrations/__pycache__/0001_initial.cpython-38.pyc
+Aplicaciones/Agenda/__pycache__/models.cpython-38.pyc
+Aplicaciones/Agenda/__pycache__/admin.cpython-38.pyc
+Aplicaciones/Agenda/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/__pycache__/__init__.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/wsgi.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/urls.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/settings.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/GuardiasDisponibles/__pycache__/views.cpython-38.pyc
+Aplicaciones/GuardiasDisponibles/__pycache__/urls.cpython-38.pyc
+Aplicaciones/GuardiasDisponibles/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/GuardiasAsignadas/__pycache__/views.cpython-38.pyc
+Aplicaciones/GuardiasAsignadas/__pycache__/urls.cpython-38.pyc
+Aplicaciones/GuardiasAsignadas/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/DevolucionGuardias/__pycache__/views.cpython-38.pyc
+Aplicaciones/DevolucionGuardias/__pycache__/urls.cpython-38.pyc
+Aplicaciones/DevolucionGuardias/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Cuentas/migrations/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/views.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/urls.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/models.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/admin.cpython-38.pyc
+Aplicaciones/Cuentas/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Agenda/migrations/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/Agenda/migrations/__pycache__/0001_initial.cpython-38.pyc
+Aplicaciones/Agenda/__pycache__/models.cpython-38.pyc
+Aplicaciones/Agenda/__pycache__/admin.cpython-38.pyc
+Aplicaciones/Agenda/__pycache__/__init__.cpython-38.pyc
+Aplicaciones/__pycache__/__init__.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/wsgi.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/urls.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/settings.cpython-38.pyc
+AgendaGuardiasMedicas/__pycache__/__init__.cpython-38.pyc
