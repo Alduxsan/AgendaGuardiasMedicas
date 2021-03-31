@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from rest_framework.response import Response
 from rest_framework import status, viewsets
@@ -8,14 +9,18 @@ from api import serializers
 from rest_framework.decorators import action
 from django.contrib.auth.models import User
 
+
+
 class GuardiasViewSet(viewsets.ModelViewSet):
 
     serializer_class = serializers.GuardiaSerializer
     queryset = Guardia.objects.all()
 
     def list(self, request):
-        
-        queryset = Guardia.objects.filter(disponible=True)
+
+        user = request.user
+        #medico = Medico.objects.filter(User.username == user.username)
+        queryset = Guardia.objects.filter(disponible=True, min_ranking__gte = 2)
         serializer = GuardiaSerializer(queryset, many=True)
         return Response(serializer.data)
 

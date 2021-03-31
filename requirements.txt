@@ -1,1 +1,5 @@
 djangorestframework
+celery
+django-rest-knox
+redis
+django-heroku
