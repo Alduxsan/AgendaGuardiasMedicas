@@ -1,5 +1,3 @@
-import django_heroku
-django_heroku.settings(locals())
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -32,11 +30,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'knox',
-    ,
-
-]
-CRONJOBS = [
-    ('*/1 * * * *', 'api.cron.guardia_ranking_update','>> /run/media/aldux/Datos/PROG/QUIMERA-DEVS/mediGuard/AgendaGuardiasMedicas/api/file.log')
 ]
 
 MIDDLEWARE = [
