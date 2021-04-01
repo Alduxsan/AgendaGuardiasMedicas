@@ -126,9 +126,6 @@ STATIC_URL = '/templates/'
 LOGIN_REDIRECT_URL = '/disponibles'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        #'rest_framework.authentication.BasicAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
-        'knox.auth.TokenAuthentication',
-    ]
+    'DEFAULT_PERMISSION_CLASSES': ('api.permission.UpdateMisDatos',),#'rest_framework.permissions.IsAuthenticated',),
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
 }

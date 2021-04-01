@@ -17,7 +17,7 @@ router.register('MartyMcFly', views.MartyMcFly, basename='MartyMcFly')
 urlpatterns = [
         # path("APIguardias/",views.GuardiasApiView.as_view()),
         url(r'', include(router.urls)),
-        path('api/login/', LoginAPI.as_view(), name='api_login'),
-        path('api/logout/', knox_views.LogoutView.as_view(), name='api_logout'),
-        path('api/logoutall/', knox_views.LogoutAllView.as_view(), name='api_logout_all'),
+        path('api/api_login/', LoginAPI.as_view(), name='api_login'),
+        path('api/api_logout/', knox_views.LogoutView.as_view(), name='api_logout'),
+        path('api/api_logoutall/', knox_views.LogoutAllView.as_view(), name='api_logout_all'),
 ]
