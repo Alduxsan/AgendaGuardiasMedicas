@@ -14,7 +14,7 @@ from knox.views import LoginView as KnoxLoginView
 from Aplicaciones.Agenda.models import Guardia, Medico
 from . import serializers
 from .serializers import GuardiaSerializer, MedicoSerializer
-from . import permission
+
 
 class GuardiasViewSet(viewsets.ModelViewSet):
 
@@ -53,8 +53,6 @@ class Medico_Datos(viewsets.ModelViewSet):
 
     serializer_class = serializers.MedicoSerializer
     queryset = Medico.objects.all()
-    #authentication_classes = (TokenAuthentication,)
-    permissions_classes = (permission.UpdateMisDatos,)
 
     def retrieve(self, request, *args, **kwargs):
         params = kwargs
