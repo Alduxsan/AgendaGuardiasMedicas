@@ -54,3 +54,23 @@ class Medico_Datos(viewsets.ModelViewSet):
         medico_user = Medico.objects.filter(ci = params['pk'])
         serializer = MedicoSerializer(medico_user, many=True)
         return Response(serializer.data)
+
+class  MartyMcFly(viewsets.ModelViewSet):
+
+    serializer_class = serializers.GuardiaSerializer
+    queryset = Guardia.objects.all()
+
+    def list(self, request):
+        
+        queryset = Guardia.objects.filter(disponible=True)
+
+        for guardia in queryset:
+            guardia.min_ranking = 1
+            guardia.save()
+        
+        queryset = Guardia.objects.filter(disponible=True)
+        serializer = GuardiaSerializer(queryset, many=True)
+        return Response(serializer.data)   
+
+
+

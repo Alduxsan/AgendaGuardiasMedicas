@@ -44,11 +44,13 @@ class Guardia(models.Model):
     def __str__(self):
         return f"{self.id}) {self.centroSalud} {self.turno} {self.fecha} ----> {self.medico} / disponible: {self.disponible}"
 
-    def save(self, force_update=True, *args, **kwargs):
+    def save(self, *args, **kwargs):
+        
         if self.medico != None:
             self.disponible = False
         else:
             self.disponible = True
+        
         
         super().save(*args, **kwargs)
 

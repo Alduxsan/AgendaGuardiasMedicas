@@ -9,6 +9,8 @@ router.register('guardias_disponibles', views.GuardiasViewSet, basename='guardia
 router.register('mis_guardias', views.MisGuardias, basename='mis_guardias')
 router.register('modificar_guardia', views.Guardia_modificar, basename='modificar_guardia')
 router.register('medico_datos', views.Medico_Datos, basename='medico_datos')
+router.register('MartyMcFly', views.MartyMcFly, basename='MartyMcFly')
+
 
 
 
