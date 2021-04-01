@@ -10,4 +10,4 @@ def start_jobs():
     #Add our task to scheduler.
     scheduler.add_job(guardia_ranking_update, 'cron', **cron_job)
 #And finally start.    
-    scheduler.start()
+    #scheduler.start()
