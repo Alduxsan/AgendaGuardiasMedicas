@@ -13,11 +13,21 @@ class CentroSalud(models.Model):
         return self.nombre
 
 class Medico(models.Model):
+    
+    DEPARTAMENTOS = [
+        ('S/A','S/A'),
+        ('Artigas','Artigas'), ('Canelones' , 'Canelones'),('Cerro Largo', 'Cerro Largo'),('Colonia','Colonia'),('Durazno','Durazno'),
+        ('Flores','Flores'),('Florida','Florida'),('Lavalleja','Lavalleja'),('Maldonado','Maldonado'),('Montevideo','Montevideo'),
+        ('Paysandu','Paysandu'),('Rio Negro','Rio Negro'),('Rivera','Rivera'),('Rocha','Rocha'),('Salto','Salto'),('San José','San José'),
+        ('Tacuarembó','Tacuarembó'),('Treinta y Trees','Treinta y Tres')  
+    ]
     ci = models.IntegerField(primary_key=True)
     ranking = models.IntegerField(default=0)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE,related_name='usuario')
     nroCaja = models.IntegerField()
     telefono = models.IntegerField()
+    departamento = models.CharField(max_length=20, choices=DEPARTAMENTOS, default='S/A')    
+    direccion = models.CharField(max_length=30, default='S/A')
 
     def __str__(self):
         return str(self.usuario)

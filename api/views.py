@@ -22,10 +22,10 @@ class GuardiasViewSet(viewsets.ModelViewSet):
     queryset = Guardia.objects.all()
 
     def list(self, request):
-
         user = request.user
-        #medico = Medico.objects.filter(User.username == user.username)
-        queryset = Guardia.objects.filter(disponible=True, min_ranking__gte = 2)
+        medico = Medico.objects.get(usuario = user)
+        ranking_medico = medico.ranking
+        queryset = Guardia.objects.filter(disponible=True, min_ranking__gte = ranking_medico)
         serializer = GuardiaSerializer(queryset, many=True)
         return Response(serializer.data)
 
@@ -53,15 +53,20 @@ class Medico_Datos(viewsets.ModelViewSet):
 
     serializer_class = serializers.MedicoSerializer
     queryset = Medico.objects.all()
-
-    def retrieve(self, request, *args, **kwargs):
-        params = kwargs
-        medico_user = Medico.objects.filter(ci = params['pk'])
-        serializer = MedicoSerializer(medico_user, many=True)
+    
+    def list(self, request):
+        medico = Medico.objects.filter(usuario = request.user)
+        serializer = MedicoSerializer(medico, many=True)
         return Response(serializer.data)
 
-class  MartyMcFly(viewsets.ModelViewSet):
+    def put(self, request, *args, **kwargs):
+        user = request.user
+        medico = Medico.objects.get(usuario = user)
+        '''actualiza solo los campos indicados de la instancia'''
+        return self.partial_update(request, *args, **kwargs)
 
+class  MartyMcFly(viewsets.ModelViewSet):
+    '''Modifica el valor de ranking_min de todas las guardias'''
     serializer_class = serializers.GuardiaSerializer
     queryset = Guardia.objects.all()
 
@@ -87,8 +92,3 @@ class LoginAPI(KnoxLoginView):
         user = serializer.validated_data['user']
         login(request, user)
         return super(LoginAPI, self).post(request, format=None)
-
-
-"""
-{"username":"medico_uno","password":"adelante"}
-"""
