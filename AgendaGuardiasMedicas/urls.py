@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from api import views
+from api.scheduler import start_jobs
 
 
 urlpatterns = [
@@ -20,3 +21,4 @@ urlpatterns = [
 urlpatterns += staticfiles_urlpatterns()
 
 
+start_jobs()
