@@ -9,7 +9,7 @@ urlpatterns = [
    
     path('admin/', admin.site.urls),
     path('', include("Aplicaciones.login.urls")),
-    re_path(r'^', include("Aplicaciones.Cuentas.urls")),
+    #re_path(r'^', include("Aplicaciones.Cuentas.urls")),
     re_path(r'^', include("Aplicaciones.GuardiasAsignadas.urls")),
     re_path(r'^', include("Aplicaciones.GuardiasDisponibles.urls")),
     re_path(r'^', include("Aplicaciones.DevolucionGuardias.urls")),

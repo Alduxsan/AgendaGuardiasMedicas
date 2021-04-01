@@ -1,16 +1,20 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 from rest_framework.response import Response
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from django.contrib.auth.models import User
 from rest_framework import permissions
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
+from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 
 from Aplicaciones.Agenda.models import Guardia, Medico
 from . import serializers
 from .serializers import GuardiaSerializer, MedicoSerializer
+from . import permission
 
 class GuardiasViewSet(viewsets.ModelViewSet):
 
@@ -49,6 +53,8 @@ class Medico_Datos(viewsets.ModelViewSet):
 
     serializer_class = serializers.MedicoSerializer
     queryset = Medico.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    permissions_classes = (permission.UpdateMisDatos,)
 
     def retrieve(self, request, *args, **kwargs):
         params = kwargs
@@ -84,3 +90,7 @@ class LoginAPI(KnoxLoginView):
         login(request, user)
         return super(LoginAPI, self).post(request, format=None)
 
+
+"""
+{"username":"medico_uno","password":"adelante"}
+"""
