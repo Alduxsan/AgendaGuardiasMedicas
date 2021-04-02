@@ -9,6 +9,7 @@ from.views import LoginAPI
 
 router = DefaultRouter()
 router.register('guardias_disponibles', views.GuardiasViewSet, basename='guardias_disponibles')
+router.register('guardias_filtro', views.GuardiasFiltro, basename='guardias_filtro')
 router.register('mis_guardias', views.MisGuardias, basename='mis_guardias')
 router.register('modificar_guardia', views.Guardia_modificar, basename='modificar_guardia')
 router.register('medico_datos', views.Medico_Datos, basename='medico_datos')
