@@ -36,9 +36,9 @@ class GuardiasViewSet(viewsets.ModelViewSet):
         serializer = GuardiaSerializer(queryset, many=True)
         return Response(serializer.data)
     
-    def retrieve(self, request):
-        print(request.query_params)
-        guardias_departamento = Guardia.objects.filter(departamento = request.query_params['dep'])
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        guardias_departamento = Guardia.objects.filter(id = params['pk'])
         serializer = GuardiaSerializer(guardias_departamento, many=True)
         return Response(serializer.data)
 
@@ -49,9 +49,7 @@ class GuardiasFiltro(viewsets.ModelViewSet):
 
     def list(self, request):
  
-        print(request.query_params)
         lista_dept = request.query_params['dep'].split('-')
-        print(lista_dept)
         guardias_departamento = Guardia.objects.filter(departamento__in = lista_dept, disponible=True)
         serializer = GuardiaSerializer(guardias_departamento, many=True)
         return Response(serializer.data)
@@ -61,10 +59,19 @@ class MisGuardias(viewsets.ModelViewSet):
     serializer_class = serializers.GuardiaSerializer
     queryset = Guardia.objects.all()
 
-    def retrieve(self, request, *args, **kwargs):
-        params = kwargs
-        mis_guardias = Guardia.objects.filter(medico = params['pk'])
-        serializer = GuardiaSerializer(mis_guardias, many=True)
+    def list(self, request, *args, **kwargs):
+ 
+        user = request.user
+        medico = Medico.objects.get(usuario = user)
+        ci_medico = medico.ci
+        
+        queryset = Guardia.objects.filter(
+
+            medico = ci_medico
+
+        )
+
+        serializer = GuardiaSerializer(queryset, many=True)
         return Response(serializer.data)
 
 class Guardia_modificar(viewsets.ModelViewSet):
