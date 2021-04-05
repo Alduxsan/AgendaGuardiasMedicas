@@ -21,6 +21,7 @@ class Medico(models.Model):
         ('Paysandu','Paysandu'),('Rio Negro','Rio Negro'),('Rivera','Rivera'),('Rocha','Rocha'),('Salto','Salto'),('San José','San José'),
         ('Tacuarembó','Tacuarembó'),('Treinta y Trees','Treinta y Tres')  
     ]
+    Nombre_Apellido = models.CharField(max_length=30, default="QuimeraDevs") 
     ci = models.IntegerField(primary_key=True)
     ranking = models.IntegerField(default=0)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE,related_name='usuario')
