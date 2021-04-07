@@ -114,7 +114,6 @@ class  MartyMcFly(viewsets.ModelViewSet):
         serializer = GuardiaSerializer(queryset, many=True)
         return Response(serializer.data)   
 
-
 class LoginAPI(KnoxLoginView):
     permission_classes = (permissions.AllowAny,)
 
@@ -127,3 +126,4 @@ class LoginAPI(KnoxLoginView):
 
 
         #{"username":"medico_uno","password":"adelante"}
+        

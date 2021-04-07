@@ -1,3 +1,4 @@
 djangorestframework
 django-rest-knox
 APScheduler
+Pillow
