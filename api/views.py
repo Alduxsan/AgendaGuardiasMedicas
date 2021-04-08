@@ -15,6 +15,7 @@ from Aplicaciones.Agenda.models import Guardia, Medico
 from . import serializers
 from .serializers import GuardiaSerializer, MedicoSerializer
 
+from api.sendPush import *
 
 class GuardiasViewSet(viewsets.ModelViewSet):
 
@@ -34,8 +35,13 @@ class GuardiasViewSet(viewsets.ModelViewSet):
             min_ranking__gte = ranking_medico)
 
         serializer = GuardiaSerializer(queryset, many=True)
+        
+        Notification('deals').sendPush(
+            title="Probando clase notification",
+            body="Pareciera que todo funciona correctamente")
+            
         return Response(serializer.data)
-    
+
     def retrieve(self, request, *args, **kwargs):
         params = kwargs
         guardias_departamento = Guardia.objects.filter(id = params['pk'])
