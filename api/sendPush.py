@@ -1,11 +1,10 @@
 import requests
 import json
 
-
 class Notification:
 
     serverToken = 'AAAAQbP1oO8:APA91bGixEb8rSPnJqiha7VhLlgH8FthJAKn8z6BnOxJSd-Gl-01zadXCOR84-RwpQeENqfT9Ab6va9vt2NVt73Z4cmvqgAlJbT45i0VQLZlnMJyNZR38Sbbo69Qvj6Cm_w_0VL8V46o'
-
+    
     def __init__(self, topic):
         self.topic = "/topics/" + str(topic)
         
