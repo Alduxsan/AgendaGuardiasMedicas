@@ -1,21 +1,24 @@
 from django.shortcuts import render
 #from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.models import User
 from django.contrib.auth import login
 from rest_framework.response import Response
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
-from django.contrib.auth.models import User
 from rest_framework import permissions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
+
 from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 
 from Aplicaciones.Agenda.models import Guardia, Medico
+
 from . import serializers
 from .serializers import GuardiaSerializer, MedicoSerializer
 
-from api.sendPush import *
+from api.sendPush import Notification
 
 class GuardiasViewSet(viewsets.ModelViewSet):
 
@@ -35,10 +38,6 @@ class GuardiasViewSet(viewsets.ModelViewSet):
             min_ranking__gte = ranking_medico)
 
         serializer = GuardiaSerializer(queryset, many=True)
-        
-        Notification('deals').sendPush(
-            title="Probando clase notification",
-            body="Pareciera que todo funciona correctamente")
             
         return Response(serializer.data)
 
