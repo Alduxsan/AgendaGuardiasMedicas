@@ -59,7 +59,7 @@ class Guardia(models.Model):
 
     def save(self, *args, **kwargs):
         
-        if self.disponible == True and self.medico != None:
+        if self.disponible == True:
             #Esta condicion se da cuando el usuario se elimina de la guardia (patch)
             self.medico = None
             Notification(self.departamento).sendPush(
