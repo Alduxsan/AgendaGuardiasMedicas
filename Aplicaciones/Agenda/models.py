@@ -18,7 +18,7 @@ class Medico(models.Model):
     
     DEPARTAMENTOS = [
         ('S/A','S/A'),
-        ('Artigas','Artigas'), ('Canelones' , 'Canelones'),('Cerro Largo', 'Cerro Largo'),('Colonia','Colonia'),('Durazno','Durazno'),
+        ('Artigas','Artigas'), ('Soriano','Soriano'),('Canelones' , 'Canelones'),('Cerro Largo', 'Cerro Largo'),('Colonia','Colonia'),('Durazno','Durazno'),
         ('Flores','Flores'),('Florida','Florida'),('Lavalleja','Lavalleja'),('Maldonado','Maldonado'),('Montevideo','Montevideo'),
         ('Paysandu','Paysandu'),('Rio Negro','Rio Negro'),('Rivera','Rivera'),('Rocha','Rocha'),('Salto','Salto'),('San José','San José'),
         ('Tacuarembó','Tacuarembó'),('Treinta y Trees','Treinta y Tres')  
@@ -31,7 +31,6 @@ class Medico(models.Model):
     telefono = models.IntegerField()
     departamento = models.CharField(max_length=20, choices=DEPARTAMENTOS, default='S/A')    
     direccion = models.CharField(max_length=30, default='S/A')
-    imagen = models.ImageField(blank=True)
 
     def __str__(self):
         return str(self.usuario)
@@ -39,7 +38,7 @@ class Medico(models.Model):
 class Guardia(models.Model):
     DEPARTAMENTOS = [
         ('S/A','S/A'),
-        ('Artigas','Artigas'), ('Canelones' , 'Canelones'),('Cerro Largo', 'Cerro Largo'),('Colonia','Colonia'),('Durazno','Durazno'),
+        ('Artigas','Artigas'), ('Soriano','Soriano'), ('Canelones' , 'Canelones'),('Cerro Largo', 'Cerro Largo'),('Colonia','Colonia'),('Durazno','Durazno'),
         ('Flores','Flores'),('Florida','Florida'),('Lavalleja','Lavalleja'),('Maldonado','Maldonado'),('Montevideo','Montevideo'),
         ('Paysandu','Paysandu'),('Rio Negro','Rio Negro'),('Rivera','Rivera'),('Rocha','Rocha'),('Salto','Salto'),('San José','San José'),
         ('Tacuarembó','Tacuarembó'),('Treinta y Trees','Treinta y Tres')  
@@ -49,7 +48,7 @@ class Guardia(models.Model):
     fecha = models.DateField()
     turno = models.CharField(max_length=25)
     centroSalud = models.ForeignKey(CentroSalud,to_field='nombre',on_delete=models.CASCADE)
-    medico = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, default=0, blank = True, null = True)
+    medico = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, default=0, blank = True )
     disponible = models.BooleanField(default=True)
     departamento = models.CharField(max_length=20, choices=DEPARTAMENTOS, default='S/A')
     min_ranking = models.BigIntegerField(blank=False, null=False, default=1)
@@ -65,9 +64,10 @@ class Guardia(models.Model):
             Notification(self.medico_id).sendPush(
             title="GUARDIA ASIGNADA",
             body=f"Tu guardia para el {self.centroSalud}, en la fecha {self.fecha} y turno {self.turno} ha sido confirmada")
-
+    
         else:
             self.disponible = True
+            self.medico = 0
             Notification(self.departamento).sendPush(
             title="NUEVA GUARDIA DISPONIBLE",
             body=f"En {self.centroSalud}, día {self.fecha}, turno {self.turno}. Tu ranking determinará la hora en que la tengas disponible.")
