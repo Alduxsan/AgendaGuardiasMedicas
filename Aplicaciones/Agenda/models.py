@@ -48,7 +48,7 @@ class Guardia(models.Model):
     fecha = models.DateField()
     turno = models.CharField(max_length=25)
     centroSalud = models.ForeignKey(CentroSalud,to_field='nombre',on_delete=models.CASCADE)
-    medico = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, default=0, blank = True )
+    medico = models.ForeignKey(Medico, on_delete=models.DO_NOTHING, default= None, blank = True, null=True)
     disponible = models.BooleanField(default=True)
     departamento = models.CharField(max_length=20, choices=DEPARTAMENTOS, default='S/A')
     min_ranking = models.BigIntegerField(blank=False, null=False, default=1)
@@ -67,7 +67,7 @@ class Guardia(models.Model):
     
         else:
             self.disponible = True
-            self.medico = 0
+            self.medico = None
             Notification(self.departamento).sendPush(
             title="NUEVA GUARDIA DISPONIBLE",
             body=f"En {self.centroSalud}, día {self.fecha}, turno {self.turno}. Tu ranking determinará la hora en que la tengas disponible.")
