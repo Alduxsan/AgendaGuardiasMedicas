@@ -20,7 +20,7 @@ class Notification:
 
         body = {
 
-                'notification': {'title': self.title,
+                'data': {'title': self.title,
                                     'body': self.body
                                     },
                  'to':

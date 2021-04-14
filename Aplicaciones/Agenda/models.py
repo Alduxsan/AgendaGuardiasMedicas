@@ -55,7 +55,7 @@ class Guardia(models.Model):
 
 
     def __str__(self):
-        return f"{self.id}) {self.centroSalud} {self.turno} {self.fecha} ----> {self.medico} / disponible: {self.disponible}"
+        return f"{self.id}) {self.centroSalud} {self.departamento} {self.turno} {self.fecha} ----> {self.medico} / disponible: {self.disponible}"
 
     def save(self, *args, **kwargs):
         
