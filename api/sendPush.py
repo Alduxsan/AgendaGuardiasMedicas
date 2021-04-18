@@ -9,9 +9,13 @@ class Notification:
         self.topic = "/topics/" + str(topic)
         
         
-    def sendPush(self, title, body):
+    def Guardia_Asignada(self, title, place, body, fecha, turno, id):
         self.title = title
+        self.place = place.nombre
         self.body = body
+        self.fecha = fecha
+        self.turno = turno
+        self.id = id
 
         headers = {
                 'Content-Type': 'application/json',
@@ -21,7 +25,39 @@ class Notification:
         body = {
 
                 'data': {'title': self.title,
-                                    'body': self.body
+                         'body': self.body,
+                         'place': self.place
+                                    },
+                 'to':
+                    self.topic,
+                #"condition": "'deals' in topics || 'Colonia' in topics",
+                'priority': 'high',
+
+                }
+
+        response = requests.post("https://fcm.googleapis.com/fcm/send", headers = headers, data=json.dumps(body))
+        print(response.status_code)
+
+        print(response.json())
+
+    def Guardia_Disponible(self, title, place, body, fecha, turno, id):
+        self.title = title
+        self.place = place.nombre
+        self.body = body
+        self.fecha = fecha
+        self.turno = turno
+        self.id = id
+
+        headers = {
+                'Content-Type': 'application/json',
+                'Authorization': 'key=' + self.serverToken,
+            }
+
+        body = {
+
+                'data': {'title': self.title,
+                         'body': self.body,
+                         'place': self.place
                                     },
                  'to':
                     self.topic,

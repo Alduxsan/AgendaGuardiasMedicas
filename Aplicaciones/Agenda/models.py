@@ -58,18 +58,28 @@ class Guardia(models.Model):
         return f"{self.id}) {self.centroSalud} {self.departamento} {self.turno} {self.fecha} ----> {self.medico} / disponible: {self.disponible}"
 
     def save(self, *args, **kwargs):
-        
         if self.disponible == True:
             #Esta condicion se da cuando el usuario se elimina de la guardia (patch)
             self.medico = None
-            Notification(self.departamento).sendPush(
+            Notification(self.departamento).Guardia_Disponible(
+
                 title="NUEVA GUARDIA DISPONIBLE",
-                body=f"En {self.centroSalud}, día {self.fecha}, turno {self.turno}. Tu ranking determinará la hora en que la tengas disponible.")    
+                place= self.centroSalud,
+                body=f"Para la fecha {self.fecha}, turno {self.turno}. Tu ranking determinará la hora en que la tengas disponible",
+                fecha = self.fecha,
+                turno = self.turno,
+                id = self.id
+                )    
         else:
             if self.disponible == False and self.medico != None:
-                Notification(self.medico_id).sendPush(
+                Notification(self.medico_id).Guardia_Asignada(
                 title="GUARDIA ASIGNADA",
-                body=f"Tu guardia para el {self.centroSalud}, en la fecha {self.fecha} y turno {self.turno} ha sido confirmada")
+                place= self.centroSalud,
+                body=f"Tu guardia para el {self.centroSalud}, en la fecha {self.fecha} y turno {self.turno} ha sido confirmada",
+                fecha = self.fecha,
+                turno = self.turno,
+                id = self.id
+                )
 
                 
         super().save(*args, **kwargs)
