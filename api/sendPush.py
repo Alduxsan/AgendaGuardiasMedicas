@@ -26,7 +26,11 @@ class Notification:
 
                 'data': {'title': self.title,
                          'body': self.body,
-                         'place': self.place
+                         'place': self.place,
+                         'fecha': self.fecha,
+                         'turno': self.turno,
+                         'id': self.id,
+                         
                                     },
                  'to':
                     self.topic,
@@ -57,7 +61,10 @@ class Notification:
 
                 'data': {'title': self.title,
                          'body': self.body,
-                         'place': self.place
+                         'place': self.place,
+                         'fecha': self.fecha,
+                         'turno': self.turno,
+                         'id': self.id,
                                     },
                  'to':
                     self.topic,

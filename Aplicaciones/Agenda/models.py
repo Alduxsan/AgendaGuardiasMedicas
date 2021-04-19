@@ -66,7 +66,7 @@ class Guardia(models.Model):
                 title="NUEVA GUARDIA DISPONIBLE",
                 place= self.centroSalud,
                 body=f"Para la fecha {self.fecha}, turno {self.turno}. Tu ranking determinará la hora en que la tengas disponible",
-                fecha = self.fecha,
+                fecha = str(self.fecha),
                 turno = self.turno,
                 id = self.id
                 )    
@@ -76,7 +76,7 @@ class Guardia(models.Model):
                 title="GUARDIA ASIGNADA",
                 place= self.centroSalud,
                 body=f"Tu guardia para el {self.centroSalud}, en la fecha {self.fecha} y turno {self.turno} ha sido confirmada",
-                fecha = self.fecha,
+                fecha = str(self.fecha),
                 turno = self.turno,
                 id = self.id
                 )
