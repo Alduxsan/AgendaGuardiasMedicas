@@ -61,7 +61,7 @@ class Guardia(models.Model):
         if self.disponible == True:
             #Esta condicion se da cuando el usuario se elimina de la guardia (patch)
             self.medico = None
-            Notification(self.departamento).Guardia_Disponible(
+            Notification(self.departamento).Guardia(
 
                 title="NUEVA GUARDIA DISPONIBLE",
                 place= self.centroSalud,
@@ -72,7 +72,7 @@ class Guardia(models.Model):
                 )    
         else:
             if self.disponible == False and self.medico != None:
-                Notification(self.medico_id).Guardia_Asignada(
+                Notification(self.medico_id).Guardia(
                 title="GUARDIA ASIGNADA",
                 place= self.centroSalud,
                 body=f"Tu guardia para el {self.centroSalud}, en la fecha {self.fecha} y turno {self.turno} ha sido confirmada",
