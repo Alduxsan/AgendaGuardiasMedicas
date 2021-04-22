@@ -3,7 +3,8 @@ from django.urls import path, include, re_path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from api import views
 from api.scheduler import start_jobs
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
    
@@ -18,7 +19,6 @@ urlpatterns = [
     path('',include('api.urls'))
 ]
 
-urlpatterns += staticfiles_urlpatterns()
-
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 start_jobs()

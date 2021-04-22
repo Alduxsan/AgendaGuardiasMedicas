@@ -31,6 +31,7 @@ class Medico(models.Model):
     telefono = models.IntegerField()
     departamento = models.CharField(max_length=20, choices=DEPARTAMENTOS, default='S/A')    
     direccion = models.CharField(max_length=30, default='S/A')
+    imagen = models.ImageField(null = True, blank = True)
 
     def __str__(self):
         return str(self.usuario)
@@ -68,7 +69,9 @@ class Guardia(models.Model):
                 body=f"Para la fecha {self.fecha}, turno {self.turno}. Tu ranking determinará la hora en que la tengas disponible",
                 fecha = str(self.fecha),
                 turno = self.turno,
-                id = self.id
+                id = self.id,
+                medico = self.medico_id,
+                disponible = self.disponible
                 )    
         else:
             if self.disponible == False and self.medico != None:
@@ -78,7 +81,9 @@ class Guardia(models.Model):
                 body=f"Tu guardia para el {self.centroSalud}, en la fecha {self.fecha} y turno {self.turno} ha sido confirmada",
                 fecha = str(self.fecha),
                 turno = self.turno,
-                id = self.id
+                id = self.id,
+                medico = self.medico_id,
+                disponible = self.disponible
                 )
 
                 

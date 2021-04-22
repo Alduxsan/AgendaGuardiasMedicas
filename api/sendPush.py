@@ -9,13 +9,15 @@ class Notification:
         self.topic = "/topics/" + str(topic)
         
         
-    def Guardia(self, title, place, body, fecha, turno, id):
+    def Guardia(self, title, place, body, fecha, turno, id, medico, disponible):
         self.title = title
         self.place = place.nombre
         self.body = body
         self.fecha = fecha
         self.turno = turno
         self.id = id
+        self.medico = medico
+        self.disponible = disponible
 
         headers = {
                 'Content-Type': 'application/json',
@@ -30,6 +32,8 @@ class Notification:
                          'fecha': self.fecha,
                          'turno': self.turno,
                          'id': self.id,
+                         'medico' : self.medico,
+                         'disponible': self.disponible
                          
                                     },
                  'to':

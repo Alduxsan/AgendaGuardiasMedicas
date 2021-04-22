@@ -113,13 +113,15 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    
 ]
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "templates"),
-    
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "profile_photo")
+
+MEDIA_URL = '/profile_photos/'
 
 STATIC_URL = '/templates/'
 
